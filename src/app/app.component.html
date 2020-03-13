@@ -1,0 +1,10 @@
+<!-- esempio uso interpolazione è preferibile -->
+<span>{{title}}</span>
+<div [innerHtml]="html"></div>
+
+<!-- in questo caso meglio la property binding -->
+<app-primo-component [parin]="title"></app-primo-component>
+<!--<app-primo-component parin={{title}}></app-primo-component>-->
+<a [href] ="link">link</a>
+<app-secondo (clickEvent)="title=$event"></app-secondo>
+

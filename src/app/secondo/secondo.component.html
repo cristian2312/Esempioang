@@ -1,0 +1,17 @@
+<div>
+<button (click)="gestioneClick($event)">Cliccami</button>
+</div>
+<p *ngIf="mostraRosso">{{titolo}}</p>
+
+<p>{{titolo}}</p>
+<input #inputProva
+(input)="inputEvent(inputProva)"
+[value]="titolo">
+
+
+<p>{{inputProva.value}}
+</p>
+<!--  direttive modificare l'html  attributes(lo stile ) / o strutturale-->
+<span [class.prova]="mostraRosso" [class.altro]="!mostraRosso">{{inputProva.value}}</span>
+<input [(ngModel)]="titolo">
+<p [ngClass]="oggettoClassi">{{inputProva.value}}</p>
