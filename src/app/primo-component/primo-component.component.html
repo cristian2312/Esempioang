@@ -1,10 +1,21 @@
 <p>{{parin}} works</p>
 
+<p>{{nameToDisplay}}</p>
 <span>{{variabile | uppercase}}</span>
-<span>{{variabile}}</span>
+
 <p>{{myDate | date | uppercase}}</p>
 <div *ngFor= "let item of items">
     <span class="prova">{{item}}</span>
   </div>
 
   <p>{{oggetto?.chiave}}</p>
+
+
+  <div [ngSwitch]='varSwitch'>
+    <p *ngSwitchCase="1">primo valore</p>
+    <p *ngSwitchCase="2">secondo valore</p>
+    <p *ngSwitchCase="3">terzo valore</p>
+    <p *ngSwitchCase="4">quarto valore</p>
+  </div>
+
+  <button (click)="incrementaSwitch()">Incrementa</button>

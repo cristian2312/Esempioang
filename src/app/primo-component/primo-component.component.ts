@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-primo-component',
@@ -6,8 +6,14 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./primo-component.component.scss']
 })
 export class PrimoComponentComponent implements OnInit {
-  @Input()
+  @Input('inputIngresso')
   parin : string;
+nameToDisplay: string;
+
+  @Input()
+  set name(valueInput: string){
+    this.nameToDisplay= valueInput + 'suffisso';
+  }
 items =[1,2];
   variabile ='valore';
 
@@ -17,9 +23,53 @@ items =[1,2];
       chiave: 'chiaveoggetto'
     }
    
-  constructor() { }
+    varSwitch= 1;
 
-  ngOnInit(): void {
+  constructor() { 
+    switch(this.varSwitch){
+      case 1:{
+        console.log('primo valore');
+        break;
+      }
+      case 2:{
+        console.log('secondo valore');
+        break;
+      }
+      case 3:{
+        console.log('primo valore');
+        break;
+      }
+      case 4:{
+        console.log('quarto valore');
+        break;
+      }
+
+    }
+
+
   }
+  incrementaSwitch() {
+    if (this.varSwitch === 4) {
+      this.varSwitch = 1;
+    } else {
+      this.varSwitch++;
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges):void{
+    if(changes){
+      console.log('changes: '+JSON.stringify(changes));
+      if(changes['parin']!=null && changes['parin'].previousValue !== changes['parin'].currentValue && !changes['parin'].firstChange){
+        console.log('è stato modficato parin');
+      }
+      if(changes['name']!=null && changes['name'].previousValue !== changes['name'].currentValue && !changes['name'].firstChange){
+        console.log('è stato modficato name');
+      } 
+    }
+  }
+  ngOnInit(): void {
+    console.log(' oninit: ' +this.nameToDisplay);
+  }
+
 
 }

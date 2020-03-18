@@ -13,6 +13,7 @@ export class AppComponent {
   link='https://www.google.it/';
 
   items =[1,2];
+  
   constructor(){
     
   }
